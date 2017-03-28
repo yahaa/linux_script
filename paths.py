@@ -11,9 +11,10 @@ def buildJavaPath():
     cmd = ['wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.tar.gz -O jdk1.8.tar.gz', \
     'tar -xzvf jdk1.8.tar.gz', 'cp -r jdk1.8.0_121 /opt',
            'echo "' + path + '" ' + '>> /etc/profile', 'init 6']
-
-    for item in cmd:
-        os.system(item)
+    s = str(os.environ)
+    if s.find('jdk') < 0:
+        for item in cmd:
+            os.system(item)
 
 if __name__ == '__main__':
     buildJavaPath()
