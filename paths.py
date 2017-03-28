@@ -19,18 +19,18 @@ def buildJavaPath():
         s = str(item)
         if s.find('bytes from'):
             net = True
-    if net = False:
+    if net == False:
         print 'Unable to link network !'
         return
 
     s = str(os.environ)
     if s.find('jdk') < 0:
         nex = True
-    if nex :
+    if nex ==False :
         print 'JDK already exists !'
         return 
 
-    if net and ex:
+    if net and nex:
         os.system(cmd[0])
 
     jdksize = getsize('jdk1.8.tar.gz')
