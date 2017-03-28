@@ -13,8 +13,7 @@ def buildJavaPath():
            'echo "' + path + '" ' + '>> /etc/profile', 'init 6']
 
     for item in cmd:
-        print item
-        #os.system(item)
+        os.system(item)
 
 if __name__ == '__main__':
     buildJavaPath()
