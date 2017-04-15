@@ -9,8 +9,8 @@ def buildJavaPath():
     export CLASSPATH=.:\$JAVA_HOME/lib:\$JRE_HOME/lib:\$CLASSPATH\n\
     export PATH=\$JAVA_HOME/bin:\$JRE_HOME/bin:\$PATH'
 
-    cmd = ['wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.tar.gz -O jdk1.8.tar.gz', \
-    'tar -xzvf jdk1.8.tar.gz', 'cp -r jdk1.8.0_121 /opt',
+    cmd = ['wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u121-b13/e9e7ea248e2c4826b92b3f075a80e441/jdk-8u121-linux-x64.tar.gz -O jdk1.8.tar.gz',
+           'tar -xzvf jdk1.8.tar.gz', 'cp -r jdk1.8.0_121 /opt',
            'echo "' + path + '" ' + '>> /etc/profile', 'init 6']
     net = False
     nex = False
@@ -26,18 +26,18 @@ def buildJavaPath():
     s = str(os.environ)
     if s.find('jdk') < 0:
         nex = True
-    if nex ==False :
+    if nex == False:
         print 'JDK already exists !'
-        return 
+        return
 
     if net and nex:
         os.system(cmd[0])
 
     jdksize = getsize('jdk1.8.tar.gz')
-    if jdksize <180000000:
+    if jdksize < 180000000:
         print 'Download error !'
         return
-        
+
     for item in cmd[1:-1]:
         os.system(item)
 
